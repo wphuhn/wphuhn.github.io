@@ -1,0 +1,16 @@
+site_name: BGWpy Tutorial
+site_description: Tutorial for Running BGWpy
+site_author: William Huhn
+
+docs_dir: 'docs'
+site_dir: 'site'
+
+repo_url: https://github.com/wphuhn/wphuhn.github.io
+
+nav:
+- Home: index.md
+- Tutorial: BGWpy_Tutorial.md
+
+#use_directory_urls: false # Uncomment when viewing on filesystem
+
+theme: material
