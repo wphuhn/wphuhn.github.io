@@ -1,0 +1,966 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="Tutorial for Running BGWpy">
+      
+      
+      
+        <meta name="author" content="William Huhn">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+    
+    
+      
+        <title>Tutorial - BGWpy Tutorial</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#comments-on-bgwpy-in-general" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="BGWpy Tutorial" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              BGWpy Tutorial
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Tutorial
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/wphuhn/wphuhn.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="BGWpy Tutorial" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    BGWpy Tutorial
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/wphuhn/wphuhn.github.io/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="./" title="Tutorial" class="md-nav__link md-nav__link--active">
+      Tutorial
+    </a>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/wphuhn/wphuhn.github.io/edit/master/docs/BGWpy_Tutorial.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="comments-on-bgwpy-in-general">Comments on BGWpy in General</h1>
+<ul>
+<li>To cut down on the number of parameters and parameter reuse, I made extensive use of dictionary unpacking.</li>
+<li>When a task is unfinished, perhaps output a bit of the output file so we have an idea why it's unfinished?</li>
+<li>This workflow is a natural candidate for a DAG implementation.</li>
+<li>The HDF5-ness of a task should be exposed:  because the output structure of <code>Kernel</code> (and thus input of <code>Absorption</code>) is directly affected by this choice, it affects program logic.</li>
+<li>Based on my reading of the <code>dir()</code> output for <code>absorption_task</code>, none of actually-interesting output from <code>Absorption</code> has an associated <code>fname</code> variable, only the stdout output (which is interesting to developers only).  When we add an activity for <code>Absorption</code>, we <em>really</em> should also add <code>fname</code> variables to minimize hard-coding file structure.</li>
+</ul>
+<h1 id="comment-on-this-notebook-in-particular">Comment on This Notebook in Particular</h1>
+<ul>
+<li>Needs much more meaningful interactivity.  Right now, it's just "run this calculation, it's successful, let's move on".<ul>
+<li>I'm thinking that we should use this as a demonstration on how to converge a calculation.  We may not be able to finish the convergence cycle in a tutorial-appropriate time on a standard workstation, but we can point them in the right direction.</li>
+</ul>
+</li>
+<li>The ordering of the Ga and As pseudopotentials is highly suspect.  I had to order them the opposite way to what is expected...</li>
+<li>No explanation of parameters are provided.  Really should explain the important ones.</li>
+<li>I've left out <code>GWFlow</code> and <code>BSEFlow</code>.  My worry is that people will abuse this and not properly converge calculations.</li>
+<li>Gabriel noted that the structure and pseudopotentials that we use in this tutorial is already pre-packaged with BGWpy and can be loaded using the code fragment below.  I'd like to leave this as an option on the table, but for now we will continue using external data files loaded from disk, as this better conforms to the standard user workflow.</li>
+</ul>
+<pre><code>from BGWpy.data import pseudo_dir, structure_GaAs, pseudos_GaAs
+print(pseudo_dir)
+print(pseudos_GaAs)
+print(Structure.from_file(structure_GaAs))
+
+</code></pre>
+
+<h1 id="introduction-to-berkeleygw">Introduction to BerkeleyGW</h1>
+<p>Here's where we put a bunch of stuff about BerkeleyGW:</p>
+<ul>
+<li>What scientific problem it solves</li>
+<li>What level of theory it works on</li>
+<li>What values it calculates</li>
+<li>How the overall workflow looks</li>
+<li>Its file-based communication structure</li>
+<li>What inputs the overall workflow needs (here, a structure representable by pymatgen and Quantum ESPRESSO pseudopotential files.)</li>
+</ul>
+<p>Only as much information should be provided as is needed as to understand this notebook; everything else can be relegated to hyperlinks to external websites.</p>
+<p>We should also stress that the parameters chosen for this notebook were used to allow a calculation to run relatively quickly on a standard workstation and are not even close to converged.</p>
+<h1 id="running-this-notebook">Running This Notebook</h1>
+<p>To run this notebook, we assume that you have the following packages installed:</p>
+<ul>
+<li>Jupyter Notebook (otherwise you wouldn't be read this!)</li>
+<li>Quantum ESPRESSO</li>
+<li>BerkeleyGW</li>
+<li>BGWpy</li>
+</ul>
+<p>We also assume that you have a basic knowledge of Python and its terminology.</p>
+<p>To run BGWpy, you'll also need the <code>bin</code> directories of Quantum ESPRESSO and BerkeleyGW installations located in your <code>PATH</code> environment variable.</p>
+<p>As with all Python-related projects, we highly recommend that you install BGWpy into its own <code>conda</code> or <code>virtualenv</code> environment.  For more information, please see TODO.</p>
+<h1 id="debug-stuff-optional">Debug Stuff (Optional!)</h1>
+<p>The following cell is used to generate information that we'll need, should we have to debug this notebook.  You don't need to run it, but it may be useful to look at for educational purposes.</p>
+<pre><code class="python">import sys
+import os
+import BGWpy.config as defaults
+
+print(&quot;Python kernel:\n    {}&quot;.format(sys.executable))
+print(&quot;Python version:\n    {}&quot;.format(sys.version))
+print(&quot;Current working directory:\n    {}&quot;.format(os.getcwd()))
+print(&quot;Use HDF5?:\n    {}&quot;.format(defaults.use_hdf5))
+print(&quot;Use complex version of BerkeleyGW?:\n    {}&quot;.format(defaults.flavor_complex))
+print(&quot;DFT Flavor:\n    {}&quot;.format(defaults.dft_flavor))
+print(&quot;Default MPI settings:\n    {}&quot;.format(defaults.default_mpi))
+print(&quot;Default MPI settings:\n    {}&quot;.format(defaults.default_runscript))
+print(&quot;Paths in $PATH:&quot;)
+for i in os.environ['PATH'].split(&quot;:&quot;):
+    print(&quot;    {}&quot;.format(i))
+</code></pre>
+
+<h1 id="load-libraries">Load Libraries</h1>
+<p>First, we load two external packages which BGWpy uses:  <code>numpy</code> and <code>pymatgen</code>.</p>
+<pre><code class="python">import pymatgen
+import numpy as np
+</code></pre>
+
+<p>Next, we load the <code>Structure</code> class from the BGWpy package.  This module is responsible for creating geometries that BGWpy can read and manipulate using the <code>pymatgen</code> package.</p>
+<pre><code class="python">from BGWpy import Structure
+</code></pre>
+
+<p>Next, we load the classes which create and run Quantum ESPRESSO calculations.</p>
+<pre><code class="python">from BGWpy import QeScfTask, QeBgwFlow
+</code></pre>
+
+<p>Finally, we load the classes with create and run BerkeleyGW calculations.</p>
+<pre><code class="python">from BGWpy import EpsilonTask, SigmaTask, KernelTask, AbsorptionTask
+</code></pre>
+
+<p>Make sure that both the BerkeleyGW and Quantum ESPRESSO binary folders are in the PATH folder</p>
+<h1 id="create-the-structure">Create the Structure</h1>
+<p>For this tutorial, we'll calculate the many-body properties of the GaAs primitive cell.  All files that you will need have been provided for you in the <code>Data</code> subdirectory.</p>
+<p>SHOW PICTURE HERE.  (Even better if can play using <code>pymatgen</code>...)</p>
+<p>Geometries are specified in BGWpy using pymatgen's <code>Structure</code> class, which may be imported directly from BGWpy or through pymatgen.</p>
+<p>There are a number of ways that we can import geometries into BGWpy using the <code>Structure</code> class.  For example, we can load them from a pre-existing CIF file:</p>
+<pre><code class="python">structure = Structure.from_file('Data/Structures/GaAs.cif')
+print(structure)
+</code></pre>
+
+<p>We can also load them from a previous pymatgen Structure which has been exported to a file in the JSON format:</p>
+<pre><code class="python">Structure.from_file('Data/Structures/GaAs.json')
+print(structure)
+</code></pre>
+
+<p>We can even use pymatgen to directly create the structure in a Python script:</p>
+<pre><code class="python">acell_angstrom =  5.6535
+rprim = np.array([[.0,.5,.5],[.5,.0,.5],[.5,.5,.0]]) * acell_angstrom
+structure = pymatgen.Structure(
+    lattice = pymatgen.core.lattice.Lattice(rprim),
+    species= ['Ga', 'As'],
+    coords = [3*[.0], 3*[.25]],
+    )
+print(structure)
+</code></pre>
+
+<p>For more information about pymatgen, please consult its official documentation.</p>
+<h1 id="generating-the-ground-state-density">Generating the Ground State Density</h1>
+<p>To begin, we will run a ground state DFT calculation to self-consistency to generate the ground state charge density for the calculation.  This ground state charge density will be fed into all wavefunction calculations in the next step.  We use Quantum ESPRESSO in this notebook, however BerkeleyGW and BGWpy supports a number of other DFT packages.</p>
+<p>First, we will create a object of the <code>QeScfTask</code> task to prepare the needed variables:</p>
+<pre><code class="python">scf_task = QeScfTask(
+    dirname='Runs/11-Density',
+
+    structure=structure,
+    prefix='GaAs',
+    pseudo_dir='Data/Pseudos',
+    pseudos=['31-Ga.PBE.UPF', '33-As.PBE.UPF'],
+
+    ngkpt=[2, 2, 2],      # k-points grid
+    kshift=[.5, .5, .5],  # k-points shift
+    ecutwfc=10.0,       # Wavefunctions cutoff energy
+
+    # These are the default parameters for the MPI runner.
+    # Please adapt them to your needs.
+    nproc=1,
+    nproc_per_node=1,
+    mpirun='mpirun',
+    nproc_flag='-n',
+    nproc_per_node_flag='--npernode',
+)
+</code></pre>
+
+<p>As you can see, BGWpy has a number of parameters that you will need to set.  However, many of these parameters are consistent from calculation to calculation, so we'll store them in dictionaries that we can reuse for future steps.</p>
+<p>First, a dictionary to store all variables that will be used across all Quantum ESPRESSO calculations:</p>
+<pre><code class="python">qe_general_settings = {
+    'prefix': 'GaAs',
+    'pseudo_dir': 'Data/Pseudos',
+    'pseudos': ['33-As.PBE.UPF', '31-Ga.PBE.UPF'], # Ordering issue...
+}
+</code></pre>
+
+<p>Next, a dictionary to store the variables which are used only for this particular SCF task:</p>
+<pre><code class="python">qe_scf_settings = {
+    'ngkpt': [2, 2, 2],
+    'kshift': [.5, .5, .5],
+    'ecutwfc': 10.0,
+}
+</code></pre>
+
+<p>And finally, a dictionary to store the settings related to running calculations with MPI.</p>
+<pre><code class="python">mpi_settings = {
+    'nproc': 4,
+    'mpirun': 'mpirun',
+    'nproc_flag': '-n',
+    'nproc_per_node_flag': &quot; &quot;, # Set to a single space to omit
+    'nproc_per_node': &quot; &quot;, # Set to a single space to omit
+}
+</code></pre>
+
+<p>Note that all these dictionaries correspond to arguments for the <code>QeScfTask</code>, stored as key/value pairs.  This allows us to use dictionary unpacking (see TODO for more information) to considerably tidy up our code:</p>
+<pre><code class="python">scf_task = QeScfTask(
+    dirname='Runs/11-Density',
+    structure=structure,
+    **qe_general_settings,
+    **qe_scf_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>Now that we've created the <code>QeScfTask</code> task, we can use the <code>write</code> method to write the needed input files to disk:</p>
+<pre><code class="python">scf_task.write()
+</code></pre>
+
+<p>If you receive an error message stating that an executable could not be found, you likely do not have the needed BerkeleyGW and Quantum ESPRESSO <code>bin</code> folders in your <code>PATH</code> environment variable.</p>
+<p>Let's take a look at the folder that was created by this task using Jupyter's built-in <code>!ls</code> magic command:</p>
+<pre><code class="python">!ls 'Runs/11-Density'
+</code></pre>
+
+<p>In our new folder, there are two input files:</p>
+<ul>
+<li><code>scf.in</code>, the input file for Quantum ESPRESSO, and</li>
+<li><code>run.sh</code>, the script that will be used to run Quantum ESPRESSO.</li>
+</ul>
+<p><code>GaAs.save</code> is a folder used by Quantum ESPRESSO to store intermediate files.</p>
+<p>Now that we've created the needed input files, let's run the <code>run.sh</code> script using the <code>run</code> method.  Note that this step will take a few seconds, as it will run Quantum ESPRESSO in the background.</p>
+<pre><code class="python">scf_task.run()
+</code></pre>
+
+<p>Finally, we can check the status of the calculation using the <code>report</code> method.  You should see a message telling you that it's been completed.</p>
+<pre><code class="python">scf_task.report()
+</code></pre>
+
+<p>Our calculation creates two files that we'll need for the generation of wavefunction files.  We'll store their filenames to reuse later.</p>
+<pre><code class="python">charge_density_fname = scf_task.charge_density_fname
+data_file_fname = scf_task.data_file_fname
+print(&quot;Charge density file name: {}&quot;.format(charge_density_fname))
+print(&quot;Data file name:           {}&quot;.format(data_file_fname))
+</code></pre>
+
+<h1 id="generating-the-wavefunctions">Generating the Wavefunctions</h1>
+<p>Now that we've generated the ground state density, we'll used this to generate the wavefunctions that we'll feed into BerkeleyGW.  This may be done with the <code>QeBgwFlow</code> class.  As mentioned in the introduction, we'll need up to 6 different types of wavefunction files.</p>
+<h2 id="wfn">WFN</h2>
+<p><code>WFN</code> is the "standard" k-shifted wavefunction file which is read by the <code>Epsilon</code> calculation, and thus is needed for all BerkeleyGW calculations.</p>
+<p>It (and all other wavefunction files) are generated using the <code>QeBgwFlow</code> class.  The only difference between these wavefunction types are the parameter values used:</p>
+<pre><code class="python">wfn_flow = QeBgwFlow(
+    dirname='Runs/12-Wfn',
+    structure=structure,
+
+    prefix='GaAs',
+    pseudo_dir='Data/Pseudos',
+    pseudos=['31-Ga.PBE.UPF', '33-As.PBE.UPF'],
+
+    charge_density_fname='Runs/11-Density/GaAs.save/charge-density.dat',
+    data_file_fname='Runs/11-Density/GaAs.save/data-file.xml',
+
+    ngkpt=[2, 2, 2],      # k-points grid
+    kshift=[.5, .5, .5],  # k-points shift
+    ecutwfc=10.0,       # Wavefunctions cutoff energy
+    nbnd=9,             # Number of bands
+
+    # These are the default parameters for the MPI runner.
+    # Please adapt them to your needs.
+    nproc=1,
+    nproc_per_node=1,
+    mpirun='mpirun',
+    nproc_flag='-n',
+    nproc_per_node_flag='--npernode'
+)
+</code></pre>
+
+<p>As before, we will break up these arguments into sets of dictionaries: the settings common to all wavefunction calculations</p>
+<pre><code class="python">qe_wfn_input_files = {
+    'charge_density_fname': charge_density_fname,
+    'data_file_fname': data_file_fname
+}
+</code></pre>
+
+<p>and the arguments specific to the current wavefunction calculation</p>
+<pre><code class="python">qe_wfn_settings = {
+    'ecutwfc': 10.0,
+    'ngkpt': [2, 2, 2],
+    'kshift': [.5, .5, .5],
+    'nbnd': 9,
+}
+</code></pre>
+
+<p>Note that, because we've already set up the <code>qe_general_settings</code> and <code>mpi_settings</code> dictionaries, we don't need to re-declare them here.</p>
+<p>We can now create the instance of the <code>QeBgwFlow</code> class:</p>
+<pre><code class="python">wfn_flow = QeBgwFlow(
+    dirname='Runs/12-Wfn',
+    structure=structure,
+    **qe_general_settings,
+    **qe_wfn_input_files,
+    **qe_wfn_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>As before, we'll write the input files to disc then run the calculation:</p>
+<pre><code class="python">wfn_flow.write()
+wfn_flow.run()
+wfn_flow.report()
+</code></pre>
+
+<p>The output specifies that we've actually run two calculations here:</p>
+<ul>
+<li>a <code>WFN</code> calculation where we calculate wavefunctions using Quantum ESPRESSO, and</li>
+<li><code>PW2BGW</code> where we convert the resulting Quantum-ESPRESSO-specific output files into a format readable by BerkeleyGW.  </li>
+</ul>
+<p>Unlike in the density case where we ran a single task, here we're running two tasks (<code>WFN</code> and <code>PW2BGW</code>) in a workflow (hence the name <code>QeBgwFlow</code>).</p>
+<p>The output of this step is a wavefunction file:</p>
+<pre><code class="python">wfn_fname = wfn_flow.wfn_fname
+print(wfn_fname)
+</code></pre>
+
+<h1 id="wfnq">WFNq</h1>
+<p>Next, we'll create <code>WFNq</code>, which is the "standard" k-shifted and q-shifted wavefunction file which is read by the <code>Epsilon</code> calculation, and thus is needed for all BerkeleyGW calculations.</p>
+<p>The only dictionary we need to create is are the settings specific to the <code>WFNq</code> wavefunction:</p>
+<pre><code class="python">qe_wfnq_settings = {
+    'ecutwfc': qe_wfn_settings['ecutwfc'],
+    'ngkpt': qe_wfn_settings['ngkpt'],
+    'kshift': qe_wfn_settings['kshift'],
+    'qshift': [.001, .0, .0],
+}
+</code></pre>
+
+<p>And then we can prepare the calculation:</p>
+<pre><code class="python">wfnq_flow = QeBgwFlow(
+    dirname='Runs/13-Wfnq',
+    structure=structure,
+    **qe_general_settings,
+    **qe_wfn_input_files,
+    **qe_wfnq_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>Create and run it:</p>
+<pre><code class="python">wfnq_flow.write()
+wfnq_flow.run()
+wfnq_flow.report()
+</code></pre>
+
+<pre><code class="python">wfnq_fname = wfnq_flow.wfn_fname
+print(wfnq_fname)
+</code></pre>
+
+<h2 id="wfn_co">Wfn_co</h2>
+<p>Next, we'll create <code>WFN_co</code>, which is the wavefunction on a coarser (and unshifted) grid than <code>WFN</code>.  This is used by <code>Sigma</code>, <code>Kernel</code>, and <code>Absorption</code>, and thus will be needed by most BerkeleyGW calculations.  we will also use this calculation to generate the ground state density and exchange-correlation energy density that will be used by <code>Sigma</code>.</p>
+<p>Once again, we set up the dictionary with our needed variables:</p>
+<pre><code class="python">qe_wfn_co_settings = {
+    'ecutwfc': qe_wfn_settings['ecutwfc'],
+    'ngkpt': [2, 2, 2],
+    'kshift': [.0, .0, .0],
+    'nbnd': 9,
+    'rhog_flag': True,
+}
+</code></pre>
+
+<p>Note that there's a new flag <code>rhog_flag</code> which tells <code>QeBgwFlow</code> to generate additional density-related files.</p>
+<p>Now we can prepare the calculation:</p>
+<pre><code class="python">wfn_co_flow = QeBgwFlow(
+    dirname = 'Runs/14-Wfn_co',
+    structure = structure,
+    **qe_general_settings,
+    **qe_wfn_input_files,
+    **qe_wfn_co_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>And create and run it:</p>
+<pre><code class="python">wfn_co_flow.write()
+wfn_co_flow.run()
+wfn_co_flow.report()
+</code></pre>
+
+<p>As mentioned before, we also output the ground state density and exechange-correlation energy density in this step in a format suitable for Quantum ESPRESSO:</p>
+<pre><code class="python">wfn_co_fname = wfn_co_flow.wfn_fname
+vxc_dat_fname = wfn_co_flow.vxc_dat_fname
+rho_fname = wfn_co_flow.rho_fname
+print(wfn_co_fname)
+print(vxc_dat_fname)
+print(rho_fname)
+</code></pre>
+
+<h2 id="wfn_fi">WFN_fi</h2>
+<p>Next, we'll create <code>WFN_fi</code>, the k-shifted <code>WFN</code> on a finer grid than <code>WFN</code>.  This is used during interpolation in the <code>Absorption</code> executable and thus is only needed if you need to solve the BSE equations.  (Symmetry is also turned off for this calculation.)</p>
+<p>By this point, you're probably familiar with the steps, so we'll present them without comment:</p>
+<pre><code class="python">qe_wfn_fi_settings = {
+    'ecutwfc': qe_wfn_settings['ecutwfc'],
+    'ngkpt': [2, 2, 2],
+    'kshift': [.5, .5, .5],
+    'nbnd': 9,
+    'symkpt': False,
+}
+</code></pre>
+
+<pre><code class="python">wfn_fi_flow = QeBgwFlow(
+    dirname = 'Runs/15-Wfn_fi',
+    structure = structure,
+    **qe_general_settings,
+    **qe_wfn_input_files,
+    **qe_wfn_fi_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<pre><code class="python">wfn_fi_flow.write()
+wfn_fi_flow.run()
+wfn_fi_flow.report()
+</code></pre>
+
+<pre><code class="python">wfn_fi_fname = wfn_fi_flow.wfn_fname
+print(wfn_fi_fname)
+</code></pre>
+
+<h2 id="wfnq_fi">WFNq_fi</h2>
+<p>FINALLY, we'll create <code>WFNq_fi</code>, the k-shifted and q-shifted <code>WFN</code> on a finer grid than <code>WFN</code>.  Like <code>WFN_fi</code>, this is used during interpolation in the <code>Absorption</code> executable and thus is only needed if you need to solve the BSE equations.  (And symmetry is turned off, as before.)</p>
+<p>Let's go through the steps again:</p>
+<pre><code class="python">qe_wfnq_fi_settings = {
+    'ecutwfc': qe_wfn_settings['ecutwfc'],
+    'ngkpt': qe_wfn_fi_settings['ngkpt'],
+    'kshift': qe_wfn_fi_settings['kshift'],
+    'nbnd': qe_wfn_fi_settings['nbnd'],
+    'symkpt': qe_wfn_fi_settings['symkpt'],
+    'qshift': [.001, .0, .0],
+}
+</code></pre>
+
+<pre><code class="python">wfnq_fi_flow = QeBgwFlow(
+    dirname = 'Runs/16-Wfnq_fi',
+    structure = structure,
+    **qe_general_settings,
+    **qe_wfn_input_files,
+    **qe_wfnq_fi_settings,
+    **mpi_settings,
+)                                                                            
+</code></pre>
+
+<pre><code class="python">wfnq_fi_flow.write()
+wfnq_fi_flow.run()
+wfnq_fi_flow.report()
+</code></pre>
+
+<pre><code class="python">wfnq_fi_fname = wfnq_fi_flow.wfn_fname
+print(wfnq_fi_fname)
+</code></pre>
+
+<h1 id="running-gw">Running GW</h1>
+<p>Now the moment you've been waiting for, when we actually run a GW calculation!</p>
+<h2 id="epsilon">Epsilon</h2>
+<p>Our first step is to run an <code>Epsilon</code> calculation, where we'll generate the dielectric matrix (to be precise, the inverse of the dielectric matrix.)</p>
+<p>Because BerkeleyGW uses a file-based communication system, we'll need to specify the location of the wavefunction files that we previously calculated:</p>
+<pre><code class="python">epsilon_input_files = {
+    'wfn_fname': wfn_fname,
+    'wfnq_fname': wfnq_fname,
+}
+</code></pre>
+
+<p>As well as the settings for an <code>Epsilon</code> calculation:</p>
+<pre><code class="python">epsilon_settings = {
+    'ngkpt': qe_wfn_settings['ngkpt'],    #    'ngkpt': [2, 2, 2],
+    'qshift': qe_wfnq_settings['qshift'], #    'qshift': [.001, .0, .0],
+    'ecuteps': 10.0,
+}
+</code></pre>
+
+<p>And then we can prepare the Epsilon calculation using an <code>EpsilonTask</code> object (reusing our <code>mpi_settings</code> dictionary from before):</p>
+<pre><code class="python">epsilon_task = EpsilonTask(
+    dirname='Runs/21-Epsilon',
+    structure=structure,
+    **epsilon_input_files,
+    **epsilon_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>Let's run the calculation:</p>
+<pre><code class="python">epsilon_task.write()
+epsilon_task.run()
+epsilon_task.report()
+</code></pre>
+
+<p>The result of Epsilon are files containing the (inverse) dielectric function:</p>
+<pre><code class="python">epsmat_fname = epsilon_task.epsmat_fname
+eps0mat_fname = epsilon_task.eps0mat_fname
+print(epsmat_fname)
+print(eps0mat_fname)
+</code></pre>
+
+<h2 id="sigma">Sigma</h2>
+<p>Now that we've calculated the (inverse) dielectric matrix and needed wavefunctions, we have everything we need to calculate the GW self-energy.  This is done with the <code>Sigma</code> executable, which takes as inputs the results from our <code>WFN_co</code> and <code>Epsilon</code> calculations:</p>
+<pre><code class="python">sigma_input_files = {
+    'wfn_co_fname': wfn_co_fname,
+    'rho_fname': rho_fname,
+    'vxc_dat_fname': vxc_dat_fname,
+    'eps0mat_fname': eps0mat_fname,
+    'epsmat_fname': epsmat_fname,
+}
+</code></pre>
+
+<p>Specify the settings:</p>
+<pre><code class="python">sigma_settings = {
+    'ngkpt': qe_wfn_co_settings['ngkpt'],  # ngkpt': [2,2,2],
+    'ibnd_min': 1,           # Minimum band for GW corrections
+    'ibnd_max': 8,           # Maximum band for GW corrections
+}
+</code></pre>
+
+<p>Prepare the calculation:</p>
+<pre><code class="python">sigma_task = SigmaTask(
+    dirname='Runs/22-Sigma',
+    structure=structure,
+    **sigma_input_files,
+    **sigma_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>And finally run it.</p>
+<pre><code class="python"># Execution
+sigma_task.write()
+sigma_task.run()
+sigma_task.report()
+</code></pre>
+
+<p>Our main output file from <code>Sigma</code> contains the GW-perturbed eigenvalues:</p>
+<pre><code class="python">eqp_fname = sigma_task.eqp1_fname
+print(eqp_fname)
+</code></pre>
+
+<p>Note that there are actually <em>two</em> files output by Sigma with GW-perturbed eigenvalues: <code>eqp0.dat</code> and <code>eqp1.dat</code>.  The former contains the on-shell solutions and is not recommended for use for quasi-particle calculations; here we use the second (off-shell) file.  For more information, please see the documentation for <code>Sigma</code>.</p>
+<p>TODO: Come up with something interesting to say.  Perhaps a convergence exercise?</p>
+<p>Let's take a look at the output for <code>Sigma</code>:</p>
+<pre><code class="python">!cat {eqp_fname}
+</code></pre>
+
+<p>Congratulations!  You have successfully ran a BerkeleyGW calculation from start to finish!</p>
+<h1 id="running-bse">Running BSE</h1>
+<p>For those of you that want to go further, BerkeleyGW can calculate excitionic properties on the GW+BSE level of theory.  This is done with the <code>KernelTask</code> and <code>AbsorptionTask</code> classes.</p>
+<h2 id="kernel">Kernel</h2>
+<p><code>Kernel</code> takes in as inputs the results of <code>WFN_co</code> and <code>Epsilon</code>:</p>
+<pre><code class="python">kernel_input_files = {
+    'wfn_co_fname': wfn_co_fname,
+    'eps0mat_fname': eps0mat_fname,
+    'epsmat_fname': epsmat_fname,
+}
+</code></pre>
+
+<p>We can specify its settings:</p>
+<pre><code class="python">kernel_settings = {
+    'ngkpt': qe_wfn_co_settings['ngkpt'],
+    'ecuteps': epsilon_settings['ecuteps'],
+    'nbnd_val': 4,
+    'nbnd_cond': 4,
+    # These extra lines will be added verbatim to the input file.
+    'extra_lines': [
+        'use_symmetries_coarse_grid',
+        'screening_semiconductor',
+    ],
+}
+</code></pre>
+
+<p>Prepare the calculation:</p>
+<pre><code class="python">kernel_task = KernelTask(
+    dirname='Runs/23-Kernel',
+    structure=structure,
+    **kernel_input_files,
+    **kernel_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>And finally run it:</p>
+<pre><code class="python">kernel_task.write()
+kernel_task.run()
+kernel_task.report()
+</code></pre>
+
+<p>The output of this step are file(s) containing the BSE kernel matrix elements.  Note that, if your BerkeleyGW calculation is not using HDF5, there will be two files:  <code>bsedmat</code> containing the direct contribution to the kernel and <code>bsexmat</code> containing the exchange contribution to the kernel.  If you are using HDF5, these two files will be combined into a single <code>bsemat</code> file.</p>
+<pre><code class="python">if (kernel_task._use_hdf5):
+    # TODO:  Needs to be tested!
+    bsemat_fname = kernel_task.bsemat_fname
+    print(bsemat_fname)
+else:
+    bsedmat_fname = kernel_task.bsedmat_fname
+    bsexmat_fname = kernel_task.bsexmat_fname
+    print(bsedmat_fname)
+    print(bsexmat_fname)
+</code></pre>
+
+<h2 id="absorption">Absorption</h2>
+<p>The last step in our adventure together is the solution of the BSE equation via the <code>Absorption</code> executable.  It has as inputs the results of <code>WFN_co</code>, <code>WFNq_fi</code>, and <code>WFN_fi</code>, as well as all previous BerkleyGW executables <code>Epsilon</code>, <code>Sigma</code>, and <code>Kernel</code>:</p>
+<pre><code class="python">absorption_input_files = {
+    'wfn_co_fname': wfn_co_fname,
+    'wfn_fi_fname': wfn_fi_fname,
+    'wfnq_fi_fname': wfnq_fi_fname,
+    'eps0mat_fname': eps0mat_fname,
+    'epsmat_fname': epsmat_fname,
+    'eqp_fname': eqp_fname,
+}
+</code></pre>
+
+<p>As previously mentioned, the file names for the BSE matrix elements will depend on whether you're using HDF5 or not:</p>
+<pre><code class="python">if (kernel_task._use_hdf5):
+    # TODO:  Needs to be tested!
+    absorption_input_files['bsemat_fname'] = bsemat_fname
+else:
+    absorption_input_files['bsexmat_fname'] = bsexmat_fname
+    absorption_input_files['bsedmat_fname'] = bsedmat_fname
+</code></pre>
+
+<p>There are... a lot of settings...</p>
+<pre><code class="python">absorption_settings = {
+    'ngkpt': [2, 2, 2],        # k-points grid
+    'nbnd_val': 4,             # Number of valence bands
+    'nbnd_cond': 4,            # Number of conduction bands
+    'nbnd_val_co': 4,          # Number of valence bands on the coarse grid
+    'nbnd_cond_co': 4,         # Number of conduction bands on the coarse grid
+    'nbnd_val_fi': 4,          # Number of valence bands on the fine grid
+    'nbnd_cond_fi': 4,         # Number of conduction bands on the fine grid
+    # These extra lines will be added verbatim to the input file.
+    'extra_lines': [
+        'use_symmetries_coarse_grid',
+        'no_symmetries_fine_grid',
+        'no_symmetries_shifted_grid',
+        'screening_semiconductor',
+        'use_velocity',
+        'gaussian_broadening',
+        'eqp_co_corrections',
+    ],
+    # These extra variables will be added to the input file as '{variable} {value}'.
+    'extra_variables': {
+        'energy_resolution': 0.15,
+    },
+}
+</code></pre>
+
+<p>But preparing the calculation is as simple as always:</p>
+<pre><code class="python">absorption_task = AbsorptionTask(
+    dirname='Runs/24-Absorption',
+    structure=structure,
+    **absorption_input_files,
+    **absorption_settings,
+    **mpi_settings,
+)
+</code></pre>
+
+<p>And, at last, we can run it.</p>
+<pre><code class="python">absorption_task.write()
+absorption_task.run()
+absorption_task.report()
+</code></pre>
+
+<p>TODO:  Output something cute here.  Perhaps use matplotlib to plot the absorption spectrum?</p>
+<pre><code class="python">list(filter(lambda x: &quot;fname&quot; in x, dir(absorption_task)))
+</code></pre>
+
+<p>Congratulations yet again!  You've run a full GW+BSE calculation!m</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Home
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

@@ -3,5 +3,5 @@ all:
 	mkdocs build
 
 clean:
-	rm -rf site
+	rm -f docs/BGWpy_Tutorial.md
 	rm -rf Runs
